@@ -41,6 +41,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnDisplayUnsortedScores = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +94,7 @@
             this.txtNewScore.Location = new System.Drawing.Point(85, 21);
             this.txtNewScore.Name = "txtNewScore";
             this.txtNewScore.Size = new System.Drawing.Size(40, 20);
-            this.txtNewScore.TabIndex = 5;
+            this.txtNewScore.TabIndex = 0;
             // 
             // txtScoreTotal
             // 
@@ -102,6 +103,7 @@
             this.txtScoreTotal.ReadOnly = true;
             this.txtScoreTotal.Size = new System.Drawing.Size(40, 20);
             this.txtScoreTotal.TabIndex = 6;
+            this.txtScoreTotal.TabStop = false;
             // 
             // txtAverage
             // 
@@ -110,6 +112,7 @@
             this.txtAverage.ReadOnly = true;
             this.txtAverage.Size = new System.Drawing.Size(40, 20);
             this.txtAverage.TabIndex = 7;
+            this.txtAverage.TabStop = false;
             // 
             // txtScoreCount
             // 
@@ -118,48 +121,66 @@
             this.txtScoreCount.ReadOnly = true;
             this.txtScoreCount.Size = new System.Drawing.Size(40, 20);
             this.txtScoreCount.TabIndex = 8;
+            this.txtScoreCount.TabStop = false;
             // 
             // btnDisplayScores
             // 
             this.btnDisplayScores.Location = new System.Drawing.Point(29, 139);
             this.btnDisplayScores.Name = "btnDisplayScores";
-            this.btnDisplayScores.Size = new System.Drawing.Size(90, 23);
-            this.btnDisplayScores.TabIndex = 9;
-            this.btnDisplayScores.Text = "&Display Scores";
+            this.btnDisplayScores.Size = new System.Drawing.Size(137, 23);
+            this.btnDisplayScores.TabIndex = 2;
+            this.btnDisplayScores.Text = "&Display Scores (Sorted)";
             this.btnDisplayScores.UseVisualStyleBackColor = true;
+            this.btnDisplayScores.Click += new System.EventHandler(this.btnDisplayScores_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(131, 139);
+            this.btnClear.Location = new System.Drawing.Point(182, 139);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(90, 23);
-            this.btnClear.TabIndex = 10;
+            this.btnClear.TabIndex = 3;
             this.btnClear.Text = "&Clear Scores";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(131, 19);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(67, 23);
-            this.btnAdd.TabIndex = 11;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(131, 169);
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.Location = new System.Drawing.Point(182, 168);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(90, 23);
-            this.btnExit.TabIndex = 12;
+            this.btnExit.TabIndex = 4;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // btnDisplayUnsortedScores
+            // 
+            this.btnDisplayUnsortedScores.Location = new System.Drawing.Point(29, 168);
+            this.btnDisplayUnsortedScores.Name = "btnDisplayUnsortedScores";
+            this.btnDisplayUnsortedScores.Size = new System.Drawing.Size(137, 23);
+            this.btnDisplayUnsortedScores.TabIndex = 9;
+            this.btnDisplayUnsortedScores.Text = "&Display Scores (Unsorted)";
+            this.btnDisplayUnsortedScores.UseVisualStyleBackColor = true;
+            this.btnDisplayUnsortedScores.Click += new System.EventHandler(this.btnDisplayUnsortedScores_Click);
+            // 
             // Form1
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.btnDisplayUnsortedScores);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClear);
@@ -195,6 +216,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnDisplayUnsortedScores;
     }
 }
 
