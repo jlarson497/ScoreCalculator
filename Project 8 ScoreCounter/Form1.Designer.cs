@@ -42,6 +42,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDisplayUnsortedScores = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtMin = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtMax = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -125,7 +129,7 @@
             // 
             // btnDisplayScores
             // 
-            this.btnDisplayScores.Location = new System.Drawing.Point(29, 139);
+            this.btnDisplayScores.Location = new System.Drawing.Point(10, 139);
             this.btnDisplayScores.Name = "btnDisplayScores";
             this.btnDisplayScores.Size = new System.Drawing.Size(137, 23);
             this.btnDisplayScores.TabIndex = 2;
@@ -165,13 +169,49 @@
             // 
             // btnDisplayUnsortedScores
             // 
-            this.btnDisplayUnsortedScores.Location = new System.Drawing.Point(29, 168);
+            this.btnDisplayUnsortedScores.Location = new System.Drawing.Point(10, 168);
             this.btnDisplayUnsortedScores.Name = "btnDisplayUnsortedScores";
             this.btnDisplayUnsortedScores.Size = new System.Drawing.Size(137, 23);
             this.btnDisplayUnsortedScores.TabIndex = 9;
             this.btnDisplayUnsortedScores.Text = "&Display Scores (Unsorted)";
             this.btnDisplayUnsortedScores.UseVisualStyleBackColor = true;
             this.btnDisplayUnsortedScores.Click += new System.EventHandler(this.btnDisplayUnsortedScores_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(131, 107);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Min: ";
+            // 
+            // txtMin
+            // 
+            this.txtMin.Location = new System.Drawing.Point(167, 104);
+            this.txtMin.Name = "txtMin";
+            this.txtMin.ReadOnly = true;
+            this.txtMin.Size = new System.Drawing.Size(31, 20);
+            this.txtMin.TabIndex = 11;
+            this.txtMin.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(204, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Max: ";
+            // 
+            // txtMax
+            // 
+            this.txtMax.Location = new System.Drawing.Point(241, 104);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.ReadOnly = true;
+            this.txtMax.Size = new System.Drawing.Size(31, 20);
+            this.txtMax.TabIndex = 13;
+            this.txtMax.TabStop = false;
             // 
             // Form1
             // 
@@ -180,6 +220,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.txtMax);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtMin);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDisplayUnsortedScores);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAdd);
@@ -217,6 +261,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDisplayUnsortedScores;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtMin;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtMax;
     }
 }
 

@@ -21,11 +21,15 @@ namespace Project_8_ScoreCounter
         List<int> scoreList = new List<int> { };
 
 
-        //Add Score to the list
+        //Add Score to the list, call clear the sortedList, and then call Sort List,
+        //Which copies over the unsorted score list and then sorts it.  If  you call
+        //sortlist without clearing the sortedList, you get duplicates
         private void AddScore()
         {
             int newScore = Convert.ToInt16(txtNewScore.Text);
             scoreList.Add(newScore);
+            sortedScoreList.Clear();
+            SortList();
         }
 
         //Total the scores
@@ -76,10 +80,24 @@ namespace Project_8_ScoreCounter
         //updates the form with the correct values
         private void UpdateForm()
         {
+            txtMax.Text = Convert.ToString(MaximumScore());
+            txtMin.Text = Convert.ToString(MinimumScore());
             txtAverage.Text = Convert.ToString(AverageScores());
             txtScoreCount.Text = Convert.ToString(CountScores());
             txtScoreTotal.Text = Convert.ToString(TotalScores());
 
+        }
+        //gets the min score
+        private int MinimumScore()
+        {
+            int minimum = scoreList.Min();
+            return minimum;
+        }
+        //gets the max score
+        private int MaximumScore()
+        {
+            int maximum = scoreList.Max();
+            return maximum;
         }
         //sorts the global list
         private void SortList()
@@ -100,22 +118,29 @@ namespace Project_8_ScoreCounter
             {
                 fullScoreList = fullScoreList + score.ToString() + "\n";
             }
-            MessageBox.Show(fullScoreList);
+            MessageBox.Show(fullScoreList, "Unsorted Scores");
         }
+
         //diplays a sorted list
         private void DisplaySortedList()
         {
-            SortList();
+            
             string fullScoreList = "";
             foreach (int score in sortedScoreList)
             {
                 fullScoreList = fullScoreList + score.ToString() + "\n";
             }
-            MessageBox.Show(fullScoreList);
-
+            MessageBox.Show(fullScoreList, "Sorted Scores");
         }
+
+        //Button click event handlers
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!IsValidForm())
+            {
+                return;
+            }
+
             AddScore();
             UpdateForm();
             txtNewScore.Clear();
@@ -129,14 +154,73 @@ namespace Project_8_ScoreCounter
 
         private void btnDisplayScores_Click(object sender, EventArgs e)
         {
+            if (sortedScoreList.Count < 1)
+            {
+                MessageBox.Show("There are no scores to display", "Null Set");
+                return;
+            }
             DisplaySortedList();
         }
 
         private void btnDisplayUnsortedScores_Click(object sender, EventArgs e)
         {
+            if (scoreList.Count < 1)
+            {
+                MessageBox.Show("There are no scores to display", "Null Set");
+                return;
+            }
             DisplayUnsortedList();
         }
 
+        //Next Methods are all for data validation
+        private bool IsPresent(TextBox textbox, string name)
+        {
+            if (textbox.Text == "")
+            {
+                MessageBox.Show(name + " is a required field.", "Entry Error");
+                textbox.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool IsInt(TextBox textbox, string name)
+        {
+            int number = 0;
+            if (int.TryParse(textbox.Text, out number))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(name + " must be an integer", "Entry Error");
+                textbox.Clear();
+                textbox.Focus();
+                return false;
+            }
+        }
+
+        private bool IsWithinRange(TextBox textbox, string name, int min, int max)
+        {
+            int number = Convert.ToInt16(textbox.Text);
+            if (number > max || number < min)
+            {
+                MessageBox.Show(name + " must be between " + min.ToString() + " and " + max.ToString(), "Entry Error");
+                textbox.Clear();
+                textbox.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool IsValidForm()
+        {
+            return
+                IsPresent(txtNewScore, "New Score") && IsInt(txtNewScore, "New Score") && IsWithinRange(txtNewScore, "New Score", 0, 100);
+
+        }
         
 
     }
